@@ -8,6 +8,33 @@
 //     q.add(1);
 //     q.remove(); // returns 1;
 
-class Queue {}
+function Queue() {
+    this.data = [];
+}
+
+Queue.prototype.add = function(item) {
+        this.data.unshift(item);
+};
+
+Queue.prototype.remove = function() {
+        return this.data.pop();
+};
 
 module.exports = Queue;
+
+// Fred's
+// class Queue {
+//     constructor() {
+//         this.queue = [];
+//     }
+
+//     add(item) {
+//         this.queue.unshift(item);
+//     }
+
+//     remove() {
+//         return this.queue.pop();
+//     }
+// }
+
+// Fred's classical inheritance
