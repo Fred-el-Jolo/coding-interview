@@ -24,6 +24,61 @@
 
 const Queue = require('./queue');
 
-function weave(sourceOne, sourceTwo) {}
+
+function weave(sourceOne, sourceTwo) {
+    const merged = new Queue();
+
+    while(sourceOne.peek() || sourceTwo.peek()) {
+        if(sourceOne.peek()) {
+            merged.add(sourceOne.remove());
+        }
+
+        if(sourceTwo.peek()) {
+            merged.add(sourceTwo.remove());
+        }
+    }
+
+    return merged;
+}
 
 module.exports = weave;
+
+// function weave(sourceOne, sourceTwo) {
+//     const merged = new Queue();
+
+//     while(sourceOne.peek() || sourceTwo.peek()) {
+//         if(sourceOne.peek()) {
+//             merged.add(sourceOne.remove());
+//         }
+
+//         if(sourceTwo.peek()) {
+//             merged.add(sourceTwo.remove());
+//         }
+//     }
+
+//     return merged;
+// }
+
+// Fred's
+// Create empty merged queue
+// Loop while sourceOne or sourceTwo returns existing peek elements
+// Remove next element from both sources
+// If an element exists, insert it into merged queue
+// function weave(sourceOne, sourceTwo) {
+//     const merged = new Queue();
+
+//     while(sourceOne.peek() || sourceTwo.peek()) {
+//         const item1 = sourceOne.remove();
+//         if(item1) {
+//             merged.add(item1);
+//         }
+
+//         const item2 = sourceTwo.remove();
+//         if(item2) {
+//             merged.add(item2);
+//         }
+//     }
+
+//     console.log(merged.data);
+//     return merged;
+// }
