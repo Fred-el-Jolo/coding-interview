@@ -10,8 +10,98 @@
 // on the tree class.  Each method should accept a
 // function that gets called with each element in the tree
 
-class Node {}
+class Node {
+    constructor(data) {
+        this.data = data;
+        this.children = [];
+    }
 
-class Tree {}
+    add(data) {
+        return this.children.push(new Node(data));
+    }
+
+    remove(data) {
+        this.children = this.children.filter(node => {
+            return node.data !== data;
+        })
+    }
+}
+
+class Tree {
+    constructor() {
+        this.root = null;
+    }
+
+    traverseBF(fn) {
+        let array = [this.root];
+
+        while (array.length) {
+            const node = array.shift(); // Take first element of the array
+
+            array.push(...node.children);   // Add children to the end of the array
+            fn(node);
+        }
+
+    }
+
+    traverseDF(fn) {
+        let array = [this.root];
+
+        while (array.length) {
+            const node = array.shift(); // Take first element of array
+
+            array.unshift(...node.children);    // Add children to the beginning of the array
+            fn(node);
+
+        }
+    }
+}
 
 module.exports = { Tree, Node };
+
+// class Node {
+//     constructor(data) {
+//         this.data = data;
+//         this.children = [];
+//     }
+
+//     add(data) {
+//         return this.children.push(new Node(data));
+//     }
+
+//     remove(data) {
+//         this.children = this.children.filter(node => {
+//             return node.data !== data;
+//         })
+//     }
+// }
+
+// class Tree {
+//     constructor() {
+//         this.root = null;
+//     }
+
+//     traverseBF(fn) {
+//         let array = [this.root];
+
+//         while (array.length) {
+//             const node = array.shift(); // Take first element of the array
+
+//             array.push(...node.children);   // Add children to the end of the array
+//             fn(node);
+//         }
+
+//     }
+
+//     traverseDF(fn) {
+//         let array = [this.root];
+
+//         while (array.length) {
+//             const node = array.shift(); // Take first element of array
+
+//             array.unshift(...node.children);    // Add children to the beginning of the array
+//             fn(node);
+
+//         }
+//     }
+// }
